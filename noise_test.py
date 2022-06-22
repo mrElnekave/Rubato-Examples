@@ -39,18 +39,6 @@ def draw():
 
 
 width, height = 50, 50
-button = GameObject(pos=Vector(10, 10))
-
-button.add(
-    Button(
-
-        width =  width,
-        height = height,
-        onclick= lambda: print("clicked"),
-    )
-).add(Rectangle(width=width, height=height, color=Color.red))
-
-main.add(button)
 
 main.draw = draw
 
