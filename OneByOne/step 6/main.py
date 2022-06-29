@@ -5,7 +5,6 @@ import random
 import objects
 
 # Pass in a custom resolution for the screen.
-rb.init(res=Vector(500, 500))
 
 goToGame = GameObject(pos=Display.center)
 goToGame.add(boundingbox := rb.Rectangle(width=300, height=40, color=Color.lime, z_index=-1))

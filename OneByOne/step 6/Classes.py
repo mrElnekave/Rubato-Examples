@@ -2,9 +2,6 @@ import rubato as rb
 from rubato import Input, Color, Time, Vector, Manifold
 import objects
 
-rb.init()
-
-
 # Component overriding.
 
 class PlayerController(rb.Component):
