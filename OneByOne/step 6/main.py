@@ -4,23 +4,13 @@ from Classes import *
 import random
 import objects
 
-# Pass in a custom resolution for the screen.
-
 goToGame = GameObject(pos=Display.center)
-goToGame.add(boundingbox := rb.Rectangle(width=300, height=40, color=Color.lime, z_index=-1))
-goToGame.add(rb.Text(text="Start6", font=rb.Font(size=36), z_index=1))
+goToGame.add(rb.Rectangle(width=300, height=70, color=Color.lime, z_index=-1))
+goToGame.add(rb.Text(text="Start5", font=rb.Font(size=64), z_index=1))
+goToGame.add(rb.Button(width=300, height=40, onclick=lambda: rb.Game.scenes.set(objects.main.id)))
 
 objects.intro.add_ui(goToGame)
 
-
-def intro_update():
-    if Input.mouse_pressed():
-        pos = Input.get_mouse_pos()
-        if boundingbox.top_left <= pos <= boundingbox.bottom_right:
-            rb.SceneManager.set(objects.main.id)
-
-
-objects.intro.update = intro_update
 rb.Game.scenes.set(objects.intro.id)
 
 
