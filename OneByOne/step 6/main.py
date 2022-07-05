@@ -8,7 +8,7 @@ import objects
 
 goToGame = GameObject(pos=Display.center)
 goToGame.add(boundingbox := rb.Rectangle(width=300, height=40, color=Color.lime, z_index=-1))
-goToGame.add(rb.Text(text="Start", font=rb.Font(size=36), z_index=1))
+goToGame.add(rb.Text(text="Start6", font=rb.Font(size=36), z_index=1))
 
 objects.intro.add_ui(goToGame)
 

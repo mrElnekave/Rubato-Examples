@@ -2,8 +2,6 @@ import rubato as rb
 from rubato import Input, Color, Time, Vector, Manifold
 import objects
 
-rb.init()
-
 
 # Component overriding.
 
@@ -55,9 +53,11 @@ class Coin(rb.Component):
     def setup(self):
         self.gameobj.add(self.image)
         self.gameobj.add(self.rect)
-        self.rect.on_collide = self.on_collide
+        self.rect.on_collide = self.on_collide  # Setting the rectangle with our custom on_collide function.
 
     def on_collide(self, manifold: Manifold):
-        print("collision")
-        if manifold.shape_b.gameobj.name == "player":
+        # A manifold is passed in when a collision occurs.
+        # In short, it holds shape_a, which holds self under `.gameobj`, and shape_b which is what self collided with.
+        # You may check the documentation for more information.
+        if manifold.shape_b.gameobj.name == "player":  # We check if we collided with the player.
             objects.main.delete(self.gameobj)

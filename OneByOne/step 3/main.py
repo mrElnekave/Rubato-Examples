@@ -16,7 +16,7 @@ goToGame = GameObject(pos=Display.center)
 # This tells the engine which component should be drawn first.
 goToGame.add(rb.Rectangle(width=300, height=70, color=Color.lime, z_index=-1))  # The button background behind the text.
 # The text of the button. Note: we make our own font for a new size, each change to the text itself is a new font.
-goToGame.add(rb.Text(text="Start", font=rb.Font(size=64), z_index=1))
+goToGame.add(rb.Text(text="Start3", font=rb.Font(size=64), z_index=1))
 # The button is simply a bounding box, that can interact with the mouse.
 # We use a lambda to be called when the button is clicked, we switch the scenes.
 goToGame.add(rb.Button(width=300, height=40, onclick=lambda: rb.Game.scenes.set(main.id)))

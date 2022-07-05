@@ -4,12 +4,11 @@ from Classes import PlayerController, Coin
 import random
 import objects
 
-rb.init(res=Vector(500, 500))
 
 goToGame = GameObject(pos=Display.center)
 goToGame.add(rb.Rectangle(width=300, height=70, color=Color.lime, z_index=-1))
-goToGame.add(rb.Text(text="Start", font=rb.Font(size=64), z_index=1))
-goToGame.add(rb.Button(width=300, height=40, onclick=lambda: rb.Game.scenes.set(main.id)))
+goToGame.add(rb.Text(text="Start5", font=rb.Font(size=64), z_index=1))
+goToGame.add(rb.Button(width=300, height=40, onclick=lambda: rb.Game.scenes.set(objects.main.id)))
 
 objects.intro.add_ui(goToGame)
 
@@ -24,6 +23,8 @@ player_rect = rb.Rectangle(width=50, height=50, color=Color.red)
 player.add(player_rect)  # A rectangle won't draw unless it has a color
 player.add(PlayerController("../art/Player1.png", 200))
 
+
+# adding coins that can be picked up.
 coins = []
 for i in range(17):
     coin = GameObject(pos=Vector(random.random()*Display.res.x, random.random()*Display.res.y))

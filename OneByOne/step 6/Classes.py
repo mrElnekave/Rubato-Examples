@@ -62,17 +62,23 @@ class Coin(rb.Component):
 
 
 class EnemyController(rb.Component):
+    """
+    The enemy controller will affect the enemy's behaviour, while adding a hitbox and image to the enemy.
+    """
     def __init__(self):
         super().__init__()
         self.image = rb.Image(rel_path="../art/Ghost Enemy.png")
         self.rect = rb.Rectangle(width=self.image.get_size().x, height=self.image.get_size().y)
-        self.speed = 20
+        self.speed = 50
 
     def setup(self):
         self.gameobj.add(self.image)
         self.gameobj.add(self.rect)
 
     def update(self):
+        # We will move the enemy towards the player
         pos = self.gameobj.pos
+        # Calculate the direction to the player
         direction = pos.dir_to(objects.player.pos)
+        # Scaling the direction of the enemy by the speed
         self.gameobj.pos += direction * (self.speed * Time.delta_time)
