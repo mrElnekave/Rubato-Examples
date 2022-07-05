@@ -2,9 +2,13 @@ import rubato as rb
 from rubato import Input, Color, Time
 
 
-# Component overriding.
+# Here we are making custom components that will provide desired behaviour to our game objects.
 
 class PlayerController(rb.Component):
+    """
+    The PlayerController class is a component, that will be added to a game object (specifically the player).
+    And supplies the behaviour for the player. Such as adding an image and moving it.
+    """
     def __init__(self, image_location, speed):
 
         super().__init__()  # you must call super().__init__()

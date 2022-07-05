@@ -8,10 +8,12 @@ rb.init()
 main = Scene()
 
 # this is a Game Object we named player, it will house all the components relevant to player.
-player = GameObject(pos=Vector(500, 500))
+position = Vector(500, 500)  # A vector is representing a 2D point of the player's position.
+player = GameObject(pos=position)
 
 # add components to player
-player.add(rb.Rectangle(width=50, height=50, color=Color.red))  # A rectangle won't draw unless it has a color
+player_rect = rb.Rectangle(width=50, height=50, color=Color.red)  # A rectangle won't draw unless it has a color
+player.add(player_rect)
 
 # once you have a Game Object you must add it to the scene or else it doesn't exist.
 main.add(player)

@@ -7,20 +7,34 @@ rb.init()
 main = Scene(name="main")
 intro = Scene(name="intro")
 
+# Here we are making game objects that will live in the intro scene.
+
+# The
 goToGame = GameObject(pos=Display.center)
-goToGame.add(boundingbox := rb.Rectangle(width=300, height=40, color=Color.lime))  # TODO: talk about z index
-goToGame.add(rb.Text(text="Start", width=300, font=rb.Font(size=36)))  # TODO: width bug fixed
+
+# As we add the components of our goToGame button object, we assign relative indexes to them.
+# This tells the engine which component should be drawn first.
+goToGame.add(rb.Rectangle(width=300, height=70, color=Color.lime, z_index=-1))  # The button background behind the text.
+# The text of the button. Note: we make our own font for a new size, each change to the text itself is a new font.
+goToGame.add(rb.Text(text="Start", font=rb.Font(size=64), z_index=1))
+# The button is simply a bounding box, that can interact with the mouse.
+# We use a lambda to be called when the button is clicked, we switch the scenes.
+goToGame.add(rb.Button(width=300, height=40, onclick=lambda: rb.Game.scenes.set(main.id)))
+
+# If you are up for a challenge implement pressing on the button to change the scene just using the rectangle
+# and `Input.mouse_pressed()`, `Input.get_mouse_pos()`
+
+# Solution:
+# def intro_update():
+#     # we can get the rectangle component from our game object
+#     rectangle = goToGame.get(rb.Rectangle)
+#     if Input.mouse_pressed():  # if the mouse is pressed
+#         pos = Input.get_mouse_pos()
+#         if rectangle.top_left <= pos <= rectangle.bottom_right:  # if the mouse is inside the rectangle
+#             rb.Game.scenes.set(main.id)  # switch to the main scene
 
 intro.add_ui(goToGame)
 
-def intro_update():
-    if Input.mouse_pressed():
-        pos = Input.get_mouse_pos()
-        if boundingbox.top_left <= pos <= boundingbox.bottom_right:
-            rb.Game.scenes.set(main.id)
-
-
-intro.update = intro_update
 rb.Game.scenes.set(intro.id)
 
 
