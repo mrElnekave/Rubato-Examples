@@ -1,12 +1,12 @@
 import rubato as rb
 from rubato import Vector, GameObject, Image, Color, Input, Time, Display
+import objects
 from Classes import *
 import random
-import objects
 
 goToGame = GameObject(pos=Display.center)
 goToGame.add(rb.Rectangle(width=300, height=70, color=Color.lime, z_index=-1))
-goToGame.add(rb.Text(text="Start5", font=rb.Font(size=64), z_index=1))
+goToGame.add(rb.Text(text="Start7", font=rb.Font(size=64), z_index=1))
 goToGame.add(rb.Button(width=300, height=40, onclick=lambda: rb.Game.scenes.set(objects.main.id)))
 
 objects.intro.add_ui(goToGame)
