@@ -1,6 +1,6 @@
 from rubato import *
 
-init(res=Vector.one*300)
+init(res=Vector.one*150, window_size=Vector.one*2*300)
 
 scene1 = Scene(name="scene1")
 scene2 = Scene(name="scene2")
@@ -9,7 +9,7 @@ class PlayerC(Component):
     def __init__(self):
         super().__init__()
         self.image = Image(rel_path="art/Player1.png", z_index=1)
-        self.rect = Rectangle(width=self.image.get_size().x+1, height=self.image.get_size().y+1, color=Color.red)
+        self.rect = Rectangle(width=self.image.get_size().x, height=self.image.get_size().y, color=Color.red)
         self.speed = 100
 
     def setup(self):
@@ -18,6 +18,15 @@ class PlayerC(Component):
 
     def update(self):
         # print(Time.frames)
+
+        if Input.key_pressed("a"):
+            self.gameobj.pos.x -= self.speed * Time.delta_time
+        if Input.key_pressed("w"):
+            self.gameobj.pos.y -= self.speed * Time.delta_time
+        if Input.key_pressed("s"):
+            self.gameobj.pos.y += self.speed * Time.delta_time
+        if Input.key_pressed("d"):
+            self.gameobj.pos.x += self.speed * Time.delta_time
         if self.rect.right > Display.right:
             self.rect.right = Display.right
             print(self.gameobj.pos + self.rect.width / 2)
@@ -29,14 +38,6 @@ class PlayerC(Component):
             if Game.scenes.current.id == scene2.id:
                 self.rect.right = Display.right
                 Game.scenes.set(scene1.id)
-        if Input.key_pressed("a"):
-            self.gameobj.pos.x -= self.speed * Time.delta_time
-        if Input.key_pressed("w"):
-            self.gameobj.pos.y -= self.speed * Time.delta_time
-        if Input.key_pressed("s"):
-            self.gameobj.pos.y += self.speed * Time.delta_time
-        if Input.key_pressed("d"):
-            self.gameobj.pos.x += self.speed * Time.delta_time
 
 
 def update():

@@ -33,8 +33,9 @@ enemy = GameObject(pos=Vector(random.random()*Display.res.x, random.random()*Dis
 enemy.add(EnemyController())
 
 camera_follow_strength = 2
+
 def update():
-    target = objects.player.pos - Display.center
+    target = objects.player.pos
     rb.Game.camera.pos = rb.Game.camera.pos.lerp(target, camera_follow_strength * Time.delta_time)
     # rb.Game.camera.pos.clamp()
 
